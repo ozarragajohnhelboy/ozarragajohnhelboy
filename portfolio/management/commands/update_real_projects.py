@@ -1,0 +1,118 @@
+from django.core.management.base import BaseCommand
+from django.utils import timezone
+from datetime import date, timedelta
+from portfolio.models import Project, Skill
+
+
+class Command(BaseCommand):
+    help = 'Update projects with John Helboy Ozarraga real projects'
+
+    def handle(self, *args, **options):
+        self.stdout.write('Updating projects with real projects...')
+        
+        # Clear all existing projects
+        Project.objects.all().delete()
+        
+        # Add real projects
+        projects_data = [
+            {
+                'title': 'Bagong Montalban App',
+                'description': 'Mobile-responsive web application for the Municipality of Rodriguez (formerly Montalban). Features citizen services, announcements, local information, and municipal services. Available on Google Play Store for easy access by residents.',
+                'short_description': 'Municipal web application for citizen services - Available on Google Play Store',
+                'project_type': 'web',
+                'demo_url': 'https://play.google.com/store/search?q=bagong%20montalban%20app&c=apps&hl=en',
+                'github_url': '',
+                'is_featured': True,
+                'created_date': date(2022, 1, 1),
+                'image': 'static/images/Bagong Montalban App.png',
+                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'JCSGO Church Management System',
+                'description': 'Comprehensive church management system for JCSGO Church. Features member management, event scheduling, financial tracking, and administrative tools. Built with modern web technologies for efficient church operations.',
+                'short_description': 'Comprehensive church management system with member and event management',
+                'project_type': 'web',
+                'demo_url': 'http://54.206.20.28',
+                'github_url': 'https://github.com/ozarragajohnhelboy/JCSGO-Church-System',
+                'is_featured': True,
+                'created_date': date(2023, 3, 1),
+                'image': 'static/images/JCSGO Church Management System.png',
+                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'Schedule System',
+                'description': 'Music Ministry Attendance System for tracking schedules and attendance. Features calendar management, member tracking, and reporting capabilities. Designed to streamline music ministry operations and improve coordination.',
+                'short_description': 'Music Ministry Attendance System with calendar and member tracking',
+                'project_type': 'web',
+                'demo_url': 'http://13.239.209.85',
+                'github_url': 'https://github.com/ozarragajohnhelboy/Music-Ministry-Attendance-System',
+                'is_featured': True,
+                'created_date': date(2023, 6, 1),
+                'image': 'static/images/Calendar System.png',
+                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'EchoVQ',
+                'description': 'AI-powered audio analysis platform for feedback that supports teachers and empowers students. Features advanced audio processing, AI analysis, and educational insights. Built with modern technologies for educational enhancement.',
+                'short_description': 'AI-powered audio analysis platform for educational feedback',
+                'project_type': 'web',
+                'demo_url': 'https://echovq.com/',
+                'github_url': 'https://github.com/daveechovq/audio-analysis',
+                'is_featured': False,
+                'created_date': date(2023, 9, 1),
+                'image': 'static/images/EchoVQ.png',
+                'technologies': ['Python', 'Django', 'MySQL', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'School Management System',
+                'description': 'Comprehensive Learning Management System (LMS) for Holy Face School. Features student management, course administration, grade tracking, and educational tools. Built to streamline school operations and enhance learning experience.',
+                'short_description': 'Learning Management System for Holy Face School',
+                'project_type': 'web',
+                'demo_url': '',
+                'github_url': 'https://github.com/phpMyYang/holyface-lms',
+                'is_featured': False,
+                'created_date': date(2023, 12, 1),
+                'image': '',
+                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'Jobzing App',
+                'description': 'Job search and career platform connecting job seekers with employers. Features job listings, application tracking, resume management, and career resources. Built to simplify the job search process and improve employment opportunities.',
+                'short_description': 'Job search and career platform for job seekers and employers',
+                'project_type': 'web',
+                'demo_url': 'https://jobzing.app/',
+                'github_url': 'https://github.com/JomariHinayon/jobzing-app',
+                'is_featured': False,
+                'created_date': date(2024, 2, 1),
+                'image': 'static/images/Jobzing.png',
+                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+            }
+        ]
+        
+        for project_data in projects_data:
+            technologies = project_data.pop('technologies')
+            image_path = project_data.pop('image', '')
+            
+            # Create project
+            project = Project.objects.create(**project_data)
+            
+            # Add technologies to project
+            for tech_name in technologies:
+                try:
+                    skill = Skill.objects.get(name=tech_name)
+                    project.technologies.add(skill)
+                except Skill.DoesNotExist:
+                    pass
+            
+            self.stdout.write(f'✓ Created project: {project.title}')
+        
+        self.stdout.write(
+            self.style.SUCCESS('\n🎉 Successfully updated projects with real projects!')
+        )
+        self.stdout.write('\nReal projects added:')
+        self.stdout.write('✓ Bagong Montalban App (Google Play Store)')
+        self.stdout.write('✓ JCSGO Church Management System')
+        self.stdout.write('✓ Schedule System (Music Ministry)')
+        self.stdout.write('✓ EchoVQ (AI Audio Analysis)')
+        self.stdout.write('✓ School Management System (Holy Face LMS)')
+        self.stdout.write('✓ Jobzing App (Job Search Platform)')

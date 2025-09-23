@@ -1,0 +1,225 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}
+  Projects - John Helboy Ozarraga
+{% endblock %}
+
+{% block content %}
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-header">
+        <h1>My Projects</h1>
+        <p>A showcase of my work across different technologies and domains</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-section">
+    <div class="container">
+      <div class="projects-filter">
+        <button class="filter-btn {% if current_type == 'all' %}active{% endif %}" data-filter="all">All Projects</button>
+        {% for type_key, type_label in project_types %}
+          <button class="filter-btn {% if current_type == type_key %}active{% endif %}" data-filter="{{ type_key }}">{{ type_label }}</button>
+        {% endfor %}
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+        {% for project in projects %}
+          <div class="project-card" data-type="{{ project.project_type }}">
+            <div class="project-image">
+              {% if project.image %}
+                <img src="{% static project.image.name %}" alt="{{ project.title }}" loading="lazy" />
+              {% else %}
+                <div class="project-placeholder">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+              {% endif %}
+
+              <div class="project-overlay">
+                <div class="project-links">
+                  {% if project.demo_url %}
+                    <a href="{{ project.demo_url }}" target="_blank" class="project-link demo" aria-label="Visit Project">
+                      <i class="fas fa-external-link-alt"></i>
+                      <span>Visit</span>
+                    </a>
+                  {% endif %}
+                  {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank" class="project-link code" aria-label="View Code">
+                      <i class="fab fa-github"></i>
+                      <span>Code</span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+
+              {% if project.is_featured %}
+                <div class="featured-badge">
+                  <i class="fas fa-star"></i>
+                  Featured
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="project-content">
+              <div class="project-header">
+                <div class="project-type">{{ project.get_project_type_display }}</div>
+                <div class="project-date">{{ project.created_date|date:'M Y' }}</div>
+              </div>
+
+              <h3>{{ project.title }}</h3>
+              <p class="project-description">{{ project.short_description }}</p>
+
+              <div class="project-tech">
+                {% for tech in project.technologies.all %}
+                  <span class="tech-tag" data-tech="{{ tech.category }}">
+                    {% if tech.icon_class %}
+                      <i class="{{ tech.icon_class }}"></i>
+                    {% endif %}
+                    {{ tech.name }}
+                  </span>
+                {% endfor %}
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-outline btn-small project-details-btn" data-project-id="{{ project.id }}">
+                  <i class="fas fa-info-circle"></i>
+                  Details
+                </button>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <div class="no-projects">
+            <i class="fas fa-folder-open"></i>
+            <h3>No projects found</h3>
+            <p>No projects match the selected filter.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <div class="project-modal" id="project-modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Have a Project in Mind?</h2>
+        <p>Let's discuss how we can bring your ideas to life with modern web technologies.</p>
+
+        <div class="cta-buttons">
+          <a href="{% url 'contact' %}" class="btn btn-primary btn-large">
+            <i class="fas fa-envelope"></i>
+            Start a Project
+          </a>
+          <a href="{% url 'about' %}" class="btn btn-secondary btn-large">
+            <i class="fas fa-user"></i>
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn')
+      const projectCards = document.querySelectorAll('.project-card')
+      const projectsGrid = document.getElementById('projects-grid')
+    
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+          const filter = this.dataset.filter
+    
+          filterButtons.forEach((btn) => btn.classList.remove('active'))
+          this.classList.add('active')
+    
+          projectCards.forEach((card) => {
+            if (filter === 'all' || card.dataset.type === filter) {
+              card.style.display = 'block'
+              setTimeout(() => card.classList.add('show'), 10)
+            } else {
+              card.classList.remove('show')
+              setTimeout(() => (card.style.display = 'none'), 300)
+            }
+          })
+        })
+      })
+    
+      const detailsButtons = document.querySelectorAll('.project-details-btn')
+      const modal = document.getElementById('project-modal')
+      const modalClose = document.getElementById('modal-close')
+      const modalOverlay = modal.querySelector('.modal-overlay')
+    
+      detailsButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+          const projectId = this.dataset.projectId
+          showProjectDetails(projectId)
+        })
+      })
+    
+      function closeModal() {
+        modal.classList.remove('active')
+        document.body.classList.remove('modal-open')
+      }
+    
+      modalClose.addEventListener('click', closeModal)
+      modalOverlay.addEventListener('click', closeModal)
+    
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal()
+        }
+      })
+    
+      function showProjectDetails(projectId) {
+        const projectCard = document.querySelector(`[data-project-id="${projectId}"]`).closest('.project-card')
+        const title = projectCard.querySelector('h3').textContent
+        const description = projectCard.querySelector('.project-description').textContent
+        const techTags = projectCard.querySelectorAll('.tech-tag')
+        const projectType = projectCard.querySelector('.project-type').textContent
+        const projectDate = projectCard.querySelector('.project-date').textContent
+    
+        let techList = ''
+        techTags.forEach((tag) => {
+          techList += `<span class="tech-tag">${tag.innerHTML}</span>`
+        })
+    
+        const modalContent = `
+                                <div class="project-detail">
+                                    <div class="project-detail-header">
+                                        <h2>${title}</h2>
+                                        <div class="project-meta">
+                                            <span class="project-type">${projectType}</span>
+                                            <span class="project-date">${projectDate}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="project-detail-content">
+                                        <p>${description}</p>
+                                        
+                                        <div class="project-tech">
+                                            <h4>Technologies Used:</h4>
+                                            <div class="tech-list">${techList}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+    
+        document.getElementById('modal-body').innerHTML = modalContent
+        modal.classList.add('active')
+        document.body.classList.add('modal-open')
+      }
+    })
+  </script>
+{% endblock %}

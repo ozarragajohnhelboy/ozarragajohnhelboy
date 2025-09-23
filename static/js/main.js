@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeFormValidation();
     initializeTheme();
     initializeSkillsCarousel();
+    initializeMobileOptimizations();
 });
 
 function initializeNavigation() {
@@ -596,6 +597,12 @@ window.addEventListener('resize', debounce(function () {
             document.body.classList.remove('nav-open');
         }
     }
+
+    // Update carousel on resize
+    const carousel = document.getElementById('skills-carousel');
+    if (carousel && typeof updateItemsPerView === 'function') {
+        updateItemsPerView();
+    }
 }, 250));
 
 document.addEventListener('keydown', function (e) {
@@ -699,7 +706,9 @@ function initializeSkillsCarousel() {
 
     // Adjust items per view based on screen size
     function updateItemsPerView() {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 480) {
+            itemsPerView = 1;
+        } else if (window.innerWidth < 768) {
             itemsPerView = 1;
         } else if (window.innerWidth < 1024) {
             itemsPerView = 2;
@@ -802,4 +811,92 @@ function initializeSkillsCarousel() {
             updateCarousel();
         }
     }, 3000); // Slower auto-play
+
+    // Touch support for mobile
+    let startX = 0;
+    let endX = 0;
+
+    carousel.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', function (e) {
+        endX = e.changedTouches[0].clientX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = startX - endX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left - next slide
+                nextSlide();
+            } else {
+                // Swipe right - previous slide
+                prevSlide();
+            }
+        }
+    }
+}
+
+function initializeMobileOptimizations() {
+    // Prevent zoom on double tap for iOS
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    // Improve mobile scrolling performance
+    let isScrolling = false;
+    window.addEventListener('scroll', function () {
+        if (!isScrolling) {
+            window.requestAnimationFrame(function () {
+                // Scroll handling code here
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
+    });
+
+    // Add mobile-specific class to body
+    if (window.innerWidth <= 768) {
+        document.body.classList.add('mobile-device');
+    }
+
+    // Handle orientation change
+    window.addEventListener('orientationchange', function () {
+        setTimeout(function () {
+            // Recalculate layouts after orientation change
+            const carousel = document.getElementById('skills-carousel');
+            if (carousel && typeof updateItemsPerView === 'function') {
+                updateItemsPerView();
+            }
+        }, 100);
+    });
+
+    // Optimize images for mobile
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (window.innerWidth <= 768) {
+            img.setAttribute('loading', 'lazy');
+        }
+    });
+
+    // Add touch feedback for buttons
+    const buttons = document.querySelectorAll('.btn, .nav-link, .theme-toggle, .carousel-btn');
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function () {
+            this.style.transform = 'scale(0.95)';
+        });
+
+        button.addEventListener('touchend', function () {
+            this.style.transform = '';
+        });
+    });
 }

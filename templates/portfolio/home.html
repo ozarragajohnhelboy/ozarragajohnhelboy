@@ -114,7 +114,7 @@
           <div class="project-card">
             <div class="project-image">
               {% if project.image %}
-                <img src="{% static project.image.name %}" alt="{{ project.title }}" />
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" />
               {% else %}
                 <div class="project-placeholder">
                   <i class="fas fa-laptop-code"></i>

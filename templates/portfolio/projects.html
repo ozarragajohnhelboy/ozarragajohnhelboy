@@ -29,7 +29,7 @@
           <div class="project-card" data-type="{{ project.project_type }}">
             <div class="project-image">
               {% if project.image %}
-                <img src="{% static project.image.name %}" alt="{{ project.title }}" loading="lazy" />
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy" />
               {% else %}
                 <div class="project-placeholder">
                   <i class="fas fa-laptop-code"></i>

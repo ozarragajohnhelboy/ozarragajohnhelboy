@@ -17,9 +17,9 @@ class Command(BaseCommand):
         projects_data = [
             {
                 'title': 'Bagong Montalban App',
-                'description': 'Mobile-responsive web application for the Municipality of Rodriguez (formerly Montalban). Features citizen services, announcements, local information, and municipal services. Available on Google Play Store for easy access by residents.',
-                'short_description': 'Municipal web application for citizen services - Available on Google Play Store',
-                'project_type': 'web',
+                'description': 'Mobile application for the Municipality of Rodriguez (formerly Montalban). Features citizen services, announcements, local information, and municipal services. Available on Google Play Store for easy access by residents.',
+                'short_description': 'Municipal mobile application for citizen services - Available on Google Play Store',
+                'project_type': 'mobile',
                 'demo_url': 'https://play.google.com/store/search?q=bagong%20montalban%20app&c=apps&hl=en',
                 'github_url': '',
                 'is_featured': True,

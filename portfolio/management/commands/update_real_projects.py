@@ -23,7 +23,7 @@ class Command(BaseCommand):
                 'demo_url': 'https://play.google.com/store/search?q=bagong%20montalban%20app&c=apps&hl=en',
                 'github_url': '',
                 'is_featured': True,
-                'created_date': date(2022, 1, 1),
+                'created_date': date(2023, 11, 1),
                 'image': 'static/images/Bagong Montalban App.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
@@ -35,7 +35,7 @@ class Command(BaseCommand):
                 'demo_url': 'http://54.206.20.28',
                 'github_url': 'https://github.com/ozarragajohnhelboy/JCSGO-Church-System',
                 'is_featured': True,
-                'created_date': date(2023, 3, 1),
+                'created_date': date(2025, 8, 1),
                 'image': 'static/images/JCSGO Church Management System.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 'demo_url': 'http://13.239.209.85',
                 'github_url': 'https://github.com/ozarragajohnhelboy/Music-Ministry-Attendance-System',
                 'is_featured': True,
-                'created_date': date(2023, 6, 1),
+                'created_date': date(2025, 9, 1),
                 'image': 'static/images/Calendar System.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
@@ -59,7 +59,7 @@ class Command(BaseCommand):
                 'demo_url': 'https://echovq.com/',
                 'github_url': 'https://github.com/daveechovq/audio-analysis',
                 'is_featured': False,
-                'created_date': date(2023, 9, 1),
+                'created_date': date(2025, 1, 1),
                 'image': 'static/images/EchoVQ.png',
                 'technologies': ['Python', 'Django', 'MySQL', 'CSS3', 'JavaScript']
             },
@@ -71,7 +71,7 @@ class Command(BaseCommand):
                 'demo_url': '',
                 'github_url': 'https://github.com/phpMyYang/holyface-lms',
                 'is_featured': False,
-                'created_date': date(2023, 12, 1),
+                'created_date': date(2025, 3, 1),
                 'image': '',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
@@ -83,7 +83,7 @@ class Command(BaseCommand):
                 'demo_url': 'https://jobzing.app/',
                 'github_url': 'https://github.com/JomariHinayon/jobzing-app',
                 'is_featured': False,
-                'created_date': date(2024, 2, 1),
+                'created_date': date(2025, 2, 1),
                 'image': 'static/images/Jobzing.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             }

@@ -24,7 +24,7 @@ class Command(BaseCommand):
                 'github_url': '',
                 'is_featured': True,
                 'created_date': date(2023, 11, 1),
-                'image': 'static/images/Bagong Montalban App.png',
+                'image': 'static/images/bagong-montalban-app.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
             {
@@ -36,7 +36,7 @@ class Command(BaseCommand):
                 'github_url': 'https://github.com/ozarragajohnhelboy/JCSGO-Church-System',
                 'is_featured': True,
                 'created_date': date(2025, 8, 1),
-                'image': 'static/images/JCSGO Church Management System.png',
+                'image': 'static/images/jcsgo-church-management-system.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
             {
@@ -48,7 +48,7 @@ class Command(BaseCommand):
                 'github_url': 'https://github.com/ozarragajohnhelboy/Music-Ministry-Attendance-System',
                 'is_featured': True,
                 'created_date': date(2025, 9, 1),
-                'image': 'static/images/Calendar System.png',
+                'image': 'static/images/calendar-system.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
             {

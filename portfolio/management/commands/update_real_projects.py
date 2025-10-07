@@ -86,6 +86,18 @@ class Command(BaseCommand):
                 'created_date': date(2025, 2, 1),
                 'image': 'static/images/Jobzing.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'AI Chatbot with Task Automation',
+                'description': 'Advanced AI-powered chatbot system with intelligent task automation capabilities. Features natural language processing, machine learning models, vector database integration, and automated task scheduling. Built with modern AI/ML technologies including TensorFlow, LangChain, and ChromaDB for enhanced conversational AI experience.',
+                'short_description': 'AI-powered chatbot with intelligent task automation and ML capabilities',
+                'project_type': 'fullstack',
+                'demo_url': '',
+                'github_url': 'https://github.com/ozarragajohnhelboy/AI-Chatbot-with-Task-Automation',
+                'is_featured': True,
+                'created_date': date(2024, 12, 1),
+                'image': '',
+                'technologies': ['Python', 'FastAPI', 'TensorFlow', 'LangChain', 'ChromaDB', 'Celery', 'Redis', 'HTML', 'CSS3', 'JavaScript']
             }
         ]
         
@@ -116,3 +128,4 @@ class Command(BaseCommand):
         self.stdout.write('✓ EchoVQ (AI Audio Analysis)')
         self.stdout.write('✓ School Management System (Holy Face LMS)')
         self.stdout.write('✓ Jobzing App (Job Search Platform)')
+        self.stdout.write('✓ AI Chatbot with Task Automation (AI/ML Project)')

@@ -24,6 +24,9 @@ class Command(BaseCommand):
             ],
             'Jobzing App': [
                 'Python', 'Django', 'Vue.js', 'PostgreSQL', 'AWS'
+            ],
+            'AI Chatbot with Task Automation': [
+                'Python', 'FastAPI', 'TensorFlow', 'LangChain', 'ChromaDB', 'Celery', 'Redis', 'HTML5', 'CSS3', 'JavaScript'
             ]
         }
 
@@ -35,13 +38,13 @@ class Command(BaseCommand):
                     skill, created = Skill.objects.get_or_create(
                         name=tech,
                         defaults={
-                            'category': 'Backend' if tech in ['Python', 'Django', 'PHP', 'PostgreSQL', 'SQLite', 'MySQL'] 
-                                      else 'Frontend' if tech in ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Vue.js', 'React Native']
-                                      else 'Mobile' if tech in ['Xcode', 'Android Studio']
-                                      else 'Database' if tech in ['Firebase']
-                                      else 'DevOps' if tech in ['AWS']
-                                      else 'Third Party' if tech in ['SendGrid', 'Stripe']
-                                      else 'Other',
+                            'category': 'backend' if tech in ['Python', 'Django', 'PHP', 'FastAPI', 'PostgreSQL', 'SQLite', 'MySQL'] 
+                                      else 'frontend' if tech in ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'Vue.js', 'React Native']
+                                      else 'mobile' if tech in ['Xcode', 'Android Studio']
+                                      else 'database' if tech in ['Firebase', 'ChromaDB', 'Redis']
+                                      else 'devops' if tech in ['AWS']
+                                      else 'tools' if tech in ['TensorFlow', 'LangChain', 'Celery', 'SendGrid', 'Stripe']
+                                      else 'tools',
                             'proficiency': 85,
                             'icon_class': self.get_icon_class(tech)
                         }
@@ -91,6 +94,12 @@ class Command(BaseCommand):
             'PostgreSQL': 'fas fa-database',
             'SendGrid': 'fas fa-envelope',
             'Stripe': 'fab fa-stripe',
-            'Vue.js': 'fab fa-vuejs'
+            'Vue.js': 'fab fa-vuejs',
+            'FastAPI': 'fas fa-server',
+            'TensorFlow': 'fas fa-brain',
+            'LangChain': 'fas fa-link',
+            'ChromaDB': 'fas fa-database',
+            'Celery': 'fas fa-tasks',
+            'Redis': 'fas fa-database'
         }
         return icon_mapping.get(tech, 'fas fa-code')

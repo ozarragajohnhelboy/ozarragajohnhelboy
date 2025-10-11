@@ -41,15 +41,15 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Schedule System',
-                'description': 'Music Ministry Attendance System for tracking schedules and attendance. Features calendar management, member tracking, and reporting capabilities. Designed to streamline music ministry operations and improve coordination.',
-                'short_description': 'Music Ministry Attendance System with calendar and member tracking',
+                'description': 'AI-powered Music Ministry Attendance System with intelligent chatbot automation for event creation. Features advanced calendar management, member tracking, automated event scheduling through AI chatbot, and comprehensive reporting capabilities. The system now includes natural language processing for seamless event creation and management, streamlining music ministry operations with cutting-edge AI technology.',
+                'short_description': 'AI-powered Music Ministry System with chatbot automation for event creation',
                 'project_type': 'web',
                 'demo_url': 'http://13.239.209.85',
                 'github_url': 'https://github.com/ozarragajohnhelboy/Music-Ministry-Attendance-System',
                 'is_featured': True,
                 'created_date': date(2025, 9, 1),
                 'image': 'static/images/calendar-system.png',
-                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript', 'AI/ML', 'Natural Language Processing', 'Chatbot Integration']
             },
             {
                 'title': 'EchoVQ',

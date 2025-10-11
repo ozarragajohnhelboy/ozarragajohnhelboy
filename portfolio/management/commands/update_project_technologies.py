@@ -8,7 +8,7 @@ class Command(BaseCommand):
         # Define project technologies mapping
         project_technologies = {
             'Schedule System': [
-                'Python', 'Django', 'HTML5', 'CSS3', 'JavaScript', 'SQLite', 'AWS'
+                'PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript', 'AI/ML', 'Natural Language Processing', 'Chatbot Integration'
             ],
             'JCSGO Church Management System': [
                 'Python', 'Django', 'HTML5', 'CSS3', 'JavaScript', 'SQLite', 'AWS'

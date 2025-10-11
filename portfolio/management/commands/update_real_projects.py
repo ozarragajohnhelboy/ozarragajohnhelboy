@@ -49,7 +49,7 @@ class Command(BaseCommand):
                 'is_featured': True,
                 'created_date': date(2025, 9, 1),
                 'image': 'static/images/calendar-system.png',
-                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript', 'AI/ML', 'Natural Language Processing', 'Chatbot Integration']
+                'technologies': ['Python', 'Django', 'MySQL', 'HTML', 'CSS', 'JavaScript', 'OpenAI']
             },
             {
                 'title': 'EchoVQ',

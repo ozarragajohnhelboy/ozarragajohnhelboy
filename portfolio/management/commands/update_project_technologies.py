@@ -27,6 +27,9 @@ class Command(BaseCommand):
             ],
             'AI Chatbot with Task Automation': [
                 'Python', 'FastAPI', 'TensorFlow', 'LangChain', 'ChromaDB', 'Celery', 'Redis', 'HTML5', 'CSS3', 'JavaScript'
+            ],
+            'B-SIMS (Barangay Smart Information Management System)': [
+                'Python', 'Django', 'Django REST Framework', 'React.js', 'PostgreSQL', 'JWT', 'TailwindCSS', 'JavaScript'
             ]
         }
 

@@ -98,6 +98,18 @@ class Command(BaseCommand):
                 'created_date': date(2024, 12, 1),
                 'image': '',
                 'technologies': ['Python', 'FastAPI', 'TensorFlow', 'LangChain', 'ChromaDB', 'Celery', 'Redis', 'HTML', 'CSS3', 'JavaScript']
+            },
+            {
+                'title': 'B-SIMS (Barangay Smart Information Management System)',
+                'description': 'Comprehensive barangay management system built with Django REST API backend and React.js frontend. Features resident management with QR code generation, household management, document management with PDF generation, blotter system for incident reporting, comprehensive reports & analytics dashboard, and real-time clock with Philippines timezone. Designed for efficient barangay operations and citizen services.',
+                'short_description': 'Comprehensive barangay management system with Django REST API and React.js',
+                'project_type': 'fullstack',
+                'demo_url': '',
+                'github_url': 'https://github.com/ozarragajohnhelboy/B-SIMS',
+                'is_featured': True,
+                'created_date': date(2025, 1, 15),
+                'image': '',
+                'technologies': ['Python', 'Django', 'Django REST Framework', 'React.js', 'PostgreSQL', 'JWT', 'TailwindCSS', 'JavaScript']
             }
         ]
         
@@ -129,3 +141,4 @@ class Command(BaseCommand):
         self.stdout.write('✓ School Management System (Holy Face LMS)')
         self.stdout.write('✓ Jobzing App (Job Search Platform)')
         self.stdout.write('✓ AI Chatbot with Task Automation (AI/ML Project)')
+        self.stdout.write('✓ B-SIMS (Barangay Smart Information Management System)')

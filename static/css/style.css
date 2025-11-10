@@ -155,6 +155,7 @@ body.modal-open {
 .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
@@ -472,6 +473,8 @@ body.modal-open {
 .hero-social {
     display: flex;
     gap: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-social a {
@@ -552,6 +555,7 @@ body.modal-open {
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    z-index: 1;
 }
 
 .scroll-indicator {
@@ -2645,6 +2649,11 @@ body.modal-open {
         .hero-social {
             justify-content: center;
             margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-scroll {
+            bottom: 1rem;
         }
         
         .image-container {

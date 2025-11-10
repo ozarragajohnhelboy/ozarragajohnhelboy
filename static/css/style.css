@@ -2308,9 +2308,10 @@ body.modal-open {
 }
 
 .footer {
-    background: var(--bg-dark);
-    color: var(--text-white);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     padding: 3rem 0 1rem;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -2324,18 +2325,18 @@ body.modal-open {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: var(--text-white);
+    color: var(--text-primary);
 }
 
 .footer-section h4 {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: var(--text-white);
+    color: var(--text-primary);
 }
 
 .footer-section p {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     line-height: 1.6;
 }
 
@@ -2348,13 +2349,13 @@ body.modal-open {
 }
 
 .footer-section ul li a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color var(--transition-fast);
 }
 
 .footer-section ul li a:hover {
-    color: var(--primary-light);
+    color: var(--primary-color);
 }
 
 .footer .social-links {
@@ -2368,10 +2369,11 @@ body.modal-open {
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bg-card);
     border-radius: 50%;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--text-secondary);
     text-decoration: none;
+    box-shadow: var(--shadow-sm);
     transition: all var(--transition-normal);
 }
 
@@ -2384,11 +2386,11 @@ body.modal-open {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-bottom p {
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
     margin: 0;
 }
 

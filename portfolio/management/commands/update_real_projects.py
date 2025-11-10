@@ -1,7 +1,11 @@
 from django.core.management.base import BaseCommand
 from django.utils import timezone
+from django.core.files import File
 from datetime import date, timedelta
 from portfolio.models import Project, Skill
+import os
+import shutil
+from pathlib import Path
 
 
 class Command(BaseCommand):
@@ -72,12 +76,12 @@ class Command(BaseCommand):
                 'github_url': 'https://github.com/phpMyYang/holyface-lms',
                 'is_featured': False,
                 'created_date': date(2025, 3, 1),
-                'image': '',
+                'image': 'static/images/LMS.png',
                 'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
             },
             {
                 'title': 'Jobzing App',
-                'description': 'Job search and career platform connecting job seekers with employers. Features job listings, application tracking, resume management, and career resources. Built to simplify the job search process and improve employment opportunities.',
+                'description': 'Job search and career platform connecting job seekers with employers. Features job listings, application tracking, resume management, and career resources. Built with Python Django framework backend, Vue.js frontend, PostgreSQL database, and deployed on AWS. Designed to simplify the job search process and improve employment opportunities.',
                 'short_description': 'Job search and career platform for job seekers and employers',
                 'project_type': 'web',
                 'demo_url': 'https://jobzing.app/',
@@ -85,7 +89,7 @@ class Command(BaseCommand):
                 'is_featured': False,
                 'created_date': date(2025, 2, 1),
                 'image': 'static/images/Jobzing.png',
-                'technologies': ['PHP', 'Laravel', 'MySQL', 'CSS3', 'JavaScript']
+                'technologies': ['Python', 'Django', 'Vue.js', 'PostgreSQL', 'AWS']
             },
             {
                 'title': 'AI Chatbot with Task Automation',
@@ -96,19 +100,19 @@ class Command(BaseCommand):
                 'github_url': 'https://github.com/ozarragajohnhelboy/AI-Chatbot-with-Task-Automation',
                 'is_featured': True,
                 'created_date': date(2024, 12, 1),
-                'image': '',
+                'image': 'static/images/aichatbot.png',
                 'technologies': ['Python', 'FastAPI', 'TensorFlow', 'LangChain', 'ChromaDB', 'Celery', 'Redis', 'HTML', 'CSS3', 'JavaScript']
             },
             {
                 'title': 'B-SIMS (Barangay Smart Information Management System)',
-                'description': 'Comprehensive barangay management system built with Django REST API backend and React.js frontend. Features resident management with QR code generation, household management, document management with PDF generation, blotter system for incident reporting, comprehensive reports & analytics dashboard, and real-time clock with Philippines timezone. Designed for efficient barangay operations and citizen services.',
-                'short_description': 'Comprehensive barangay management system with Django REST API and React.js',
-                'project_type': 'fullstack',
+                'description': 'Comprehensive barangay management system built with Django REST API backend and React.js frontend. Features resident management with QR code generation, household management, document management with PDF generation, blotter system for incident reporting, comprehensive reports & analytics dashboard, and real-time clock with Philippines timezone. Available as both web application and mobile application for efficient barangay operations and citizen services.',
+                'short_description': 'Comprehensive barangay management system - Web and Mobile Application',
+                'project_type': 'web_mobile',
                 'demo_url': '',
                 'github_url': 'https://github.com/ozarragajohnhelboy/B-SIMS',
                 'is_featured': True,
                 'created_date': date(2025, 1, 15),
-                'image': '',
+                'image': 'static/images/BSIMS.png',
                 'technologies': ['Python', 'Django', 'Django REST Framework', 'React.js', 'PostgreSQL', 'JWT', 'TailwindCSS', 'JavaScript']
             }
         ]
@@ -119,6 +123,29 @@ class Command(BaseCommand):
             
             # Create project
             project = Project.objects.create(**project_data)
+            
+            # Handle image if path is provided
+            if image_path:
+                base_dir = Path(__file__).resolve().parent.parent.parent.parent
+                static_image_path = base_dir / image_path
+                
+                if static_image_path.exists():
+                    # Copy image to media/projects/ directory
+                    media_dir = base_dir / 'media' / 'projects'
+                    media_dir.mkdir(parents=True, exist_ok=True)
+                    
+                    # Get filename from path
+                    filename = static_image_path.name
+                    destination = media_dir / filename
+                    
+                    # Copy file
+                    shutil.copy2(static_image_path, destination)
+                    
+                    # Set image field
+                    with open(destination, 'rb') as f:
+                        project.image.save(filename, File(f), save=True)
+                    
+                    self.stdout.write(f'  → Image set: {filename}')
             
             # Add technologies to project
             for tech_name in technologies:

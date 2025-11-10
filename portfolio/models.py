@@ -29,6 +29,7 @@ class Project(models.Model):
     PROJECT_TYPES = [
         ('web', 'Web Application'),
         ('mobile', 'Mobile Application'),
+        ('web_mobile', 'Web and Mobile Application'),
         ('api', 'API/Backend'),
         ('fullstack', 'Full Stack'),
         ('devops', 'DevOps/Infrastructure'),

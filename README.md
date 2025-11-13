@@ -32,8 +32,11 @@ Built with Django REST Framework and React.js to visualize sales performance dat
 ## Connect with Me
 
 **Email:** ozarragajohnhelboy@gmail.com  
+
 **LinkedIn:** https://www.linkedin.com/in/john-helboy-ozarraga-285740316/
+
 **Facebook:** https://web.facebook.com/JANJANAN.11/
+
 **Portfolio:** https://dev-ozarraga.online
 
 ---

@@ -18,14 +18,14 @@ I have solid experience in frontend and cross-platform development using React.j
 
 ## Featured Projects
 
-**1. Learning Management System (LMS)**  
-A full-stack web application built with Django and React, featuring user authentication, course management, and AWS-hosted deployment.  
+**1. Automation with AI Chatbot**  
+Uses TensorFlow model (or pre-trained NLP) to understand natural language Automates simple tasks (e.g., open a file, schedule reminders, run scripts) Can learn from previous chats.
 
-**2. AI Voice Coach**  
-A Flask + TensorFlow project that analyzes tone and speech patterns to help users improve communication skills.  
+**2. JCSGO Kasiglahan Church Management System**  
+A comprehensive multi-tenant church management system built with Django, designed to handle multiple church branches with role-based access control and member management.  
 
-**3. Sales Insight Dashboard**  
-Built with Django REST Framework and React.js to visualize sales performance data and provide predictive insights.  
+**3. Barangay Smart Information Management System (B-SIMS)**  
+The Barang Smart Information Management System is a comprehensive platform designed to streamline the management of barangay operations and services. It provides efficient tools for record-keeping, reporting, and real-time information access, helping barangay officials and staff deliver services more effectively to the community.
 
 ---
 

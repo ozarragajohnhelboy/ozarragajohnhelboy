@@ -29,18 +29,11 @@ Built with Django REST Framework and React.js to visualize sales performance dat
 
 ---
 
-## GitHub Stats
-
-![John's GitHub stats](https://github-readme-stats.vercel.app/api?username=johnozarraga&show_icons=true&theme=default)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=johnozarraga&layout=compact&theme=default)
-
----
-
 ## Connect with Me
 
-**Email:** johnozarraga@example.com  
+**Email:** ozarragajohnhelboy@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/john-helboy-ozarraga-285740316/
+**Facebook:** https://web.facebook.com/JANJANAN.11/
 **Portfolio:** https://dev-ozarraga.online
 
 ---

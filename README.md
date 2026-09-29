@@ -1,44 +1,76 @@
-# Hi, I'm John Helboy Ozarraga
+# John Helboy Ozarraga — Portfolio
 
-I'm a Python Developer with over 4 years of experience building scalable web applications and RESTful APIs. My main expertise lies in Django and Flask, and I also work with FastAPI for high-performance API development. I enjoy transforming ideas into reliable, efficient, and maintainable software solutions.
+A React portfolio site for John Helboy Ozarraga, Python and full stack developer. Built as a
+static single-page app so it deploys to Vercel with no database or server to maintain.
 
-I have solid experience in frontend and cross-platform development using React.js and React Native, as well as database management with MySQL, PostgreSQL, and SQLite. I also deploy and maintain cloud-based systems using AWS services such as RDS, S3, IAM, and EC2. Recently, I've been working with TensorFlow to integrate machine learning models into modern web applications.
+**Live site:** https://dev-ozarraga.online
+
+## Stack
+
+| Area | Choice |
+| --- | --- |
+| Framework | React 18 + Vite |
+| Routing | React Router (client-side) |
+| Styling | Tailwind CSS with a custom design system |
+| Animation | Framer Motion |
+| Icons | react-icons (Feather) |
+| Contact form | Vercel serverless function + Resend |
+
+## Getting started
+
+```bash
+npm install
+npm run dev      # http://localhost:5173
+```
+
+Other scripts:
+
+```bash
+npm run build    # production build into dist/
+npm run preview  # serve the production build locally
+npm run lint     # eslint
+```
+
+## Project structure
+
+```
+api/contact.js          Vercel serverless function for the contact form
+public/                 Static assets (project screenshots, profile photo, resume)
+src/data/               All site content — edit these to update the portfolio
+src/components/         Layout, UI primitives and feature components
+src/pages/              Home, About, Projects, Experience, Contact, 404
+```
+
+All content lives in `src/data/`, so updating the portfolio means editing plain JavaScript
+objects rather than touching components:
+
+- `site.js` — personal info, social links, navigation, values, services
+- `projects.js` — project entries and their type filters
+- `experience.js` — work history and education
+- `skills.js` — skill groups and proficiency levels
+
+## Deploying to Vercel
+
+1. Push this repository to GitHub.
+2. In Vercel, choose **Add New → Project** and import the repository.
+3. Vercel auto-detects Vite. The settings in `vercel.json` handle the build command, output
+   directory and the SPA rewrite that keeps client-side routes working on refresh.
+4. Deploy.
+
+### Contact form email (optional)
+
+The form works without configuration — it just tells the visitor to email directly and offers a
+mail-app fallback. To receive messages as email, add these environment variables in
+**Vercel → Settings → Environment Variables**:
+
+| Variable | Description |
+| --- | --- |
+| `RESEND_API_KEY` | API key from [resend.com](https://resend.com) |
+| `CONTACT_TO_EMAIL` | Inbox that receives the messages |
+| `CONTACT_FROM_EMAIL` | Sender address on a domain verified in Resend |
+
+See `.env.example` for a template.
 
 ---
 
-## Technical Skills
-
-**Languages:** Python, JavaScript  
-**Frameworks & Libraries:** Django, Flask, FastAPI, React.js, React Native, TensorFlow  
-**Databases:** MySQL, PostgreSQL, SQLite  
-**Cloud & DevOps:** AWS (RDS, S3, IAM, EC2), Git, Docker  
-**Other Skills:** REST API Design, CI/CD, Unit Testing, Agile Development
-
----
-
-## Featured Projects
-
-**1. Automation with AI Chatbot**  
-Uses TensorFlow model (or pre-trained NLP) to understand natural language Automates simple tasks (e.g., open a file, schedule reminders, run scripts) Can learn from previous chats.
-
-**2. JCSGO Kasiglahan Church Management System**  
-A comprehensive multi-tenant church management system built with Django, designed to handle multiple church branches with role-based access control and member management.  
-
-**3. Barangay Smart Information Management System (B-SIMS)**  
-The Barang Smart Information Management System is a comprehensive platform designed to streamline the management of barangay operations and services. It provides efficient tools for record-keeping, reporting, and real-time information access, helping barangay officials and staff deliver services more effectively to the community.
-
----
-
-## Connect with Me
-
-**Email:** ozarragajohnhelboy@gmail.com  
-
-**LinkedIn:** https://www.linkedin.com/in/john-helboy-ozarraga-285740316/
-
-**Facebook:** https://web.facebook.com/JANJANAN.11/
-
-**Portfolio:** https://dev-ozarraga.online
-
----
-
-*“Code with clarity, build with purpose.”*
+_“Code with clarity, build with purpose.”_

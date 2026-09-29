@@ -1,53 +1,33 @@
-# Django
-*.log
-*.pot
-*.pyc
-__pycache__/
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media/
+# Dependencies
+node_modules/
 
-# Virtual Environment
-venv/
-env/
-ENV/
+# Build output
+dist/
+dist-ssr/
+*.local
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# Vercel
+.vercel/
 
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Static files
-staticfiles/
-static_root/
-
-# Environment variables
+# Environment
 .env
-.env.local
-.env.production
+.env.*
+!.env.example
 
-# Coverage reports
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
 
-# Pytest
-.pytest_cache/
+# Local verification screenshots
+.screenshots/
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# Editors & OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db

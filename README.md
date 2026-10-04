@@ -1,5 +1,5 @@
 Hi, I'm John Helboy Ozarraga
-I'm a Python Developer with over 4 years of experience building scalable web applications and RESTful APIs. My main expertise lies in Django and Flask, and I also work with FastAPI for high-performance API development. I enjoy transforming ideas into reliable, efficient, and maintainable software solutions.
+I'm a Python Developer with over 5 years of experience building scalable web applications and RESTful APIs. My main expertise lies in Django and Flask, and I also work with FastAPI for high-performance API development. I enjoy transforming ideas into reliable, efficient, and maintainable software solutions.
 
 I have solid experience in frontend and cross-platform development using React.js and React Native, as well as database management with MySQL, PostgreSQL, and SQLite. I also deploy and maintain cloud-based systems using AWS services such as RDS, S3, IAM, and EC2. Recently, I've been working with TensorFlow to integrate machine learning models into modern web applications.
 
